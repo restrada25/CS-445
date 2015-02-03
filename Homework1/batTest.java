@@ -39,6 +39,51 @@ public class batTest {
 	}
 	
 	@Test
+	public void eatTest3() {
+		PrintStream originalOut = System.out;
+		OutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		System.setOut(ps);
+
+		Creature t = new Ant("Tiny");
+		String expected = "Vampire Bat has just eaten a Ant";
+		
+		c1.eat(t);
+		assertEquals(expected+separator,os.toString());	
+		System.setOut(originalOut);		
+	}
+	
+	@Test
+	public void eatTest4() {
+		PrintStream originalOut = System.out;
+		OutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		System.setOut(ps);
+
+		Creature t = new Bat(" ");
+		String expected = "Vampire Bat has just eaten a Bat";
+		
+		c1.eat(t);
+		assertEquals(expected+separator,os.toString());	
+		System.setOut(originalOut);		
+	}
+	
+	@Test
+	public void eatTest5() {
+		PrintStream originalOut = System.out;
+		OutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		System.setOut(ps);
+
+		Creature t = new Fly(" ");
+		String expected = "Vampire Bat has just eaten a Fly";
+		
+		c1.eat(t);
+		assertEquals(expected+separator,os.toString());	
+		System.setOut(originalOut);		
+	}
+	
+	@Test
 	public void moveTest() {
 		PrintStream originalOut = System.out;
 		OutputStream os = new ByteArrayOutputStream();
@@ -76,6 +121,54 @@ public class batTest {
 		System.setOut(ps);
 
 		String expected = "Vampire Bat has eaten a Fly";
+		
+		c1.whatDidYouEat();
+		assertEquals(expected+separator,os.toString());	
+		System.setOut(originalOut);		
+	}
+	
+	@Test
+	public void whatDidYouEatTest3() {
+		Creature t = new Tiger();
+		c1.eat(t);
+		PrintStream originalOut = System.out;
+		OutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		System.setOut(ps);
+
+		String expected = "Vampire Bat has eaten a Tiger";
+		
+		c1.whatDidYouEat();
+		assertEquals(expected+separator,os.toString());	
+		System.setOut(originalOut);		
+	}
+	
+	@Test
+	public void whatDidYouEatTest4() {
+		Creature t = new Bat();
+		c1.eat(t);
+		PrintStream originalOut = System.out;
+		OutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		System.setOut(ps);
+
+		String expected = "Vampire Bat has eaten a Bat";
+		
+		c1.whatDidYouEat();
+		assertEquals(expected+separator,os.toString());	
+		System.setOut(originalOut);		
+	}
+	
+	@Test
+	public void whatDidYouEatTest5() {
+		Creature t = new Ant();
+		c1.eat(t);
+		PrintStream originalOut = System.out;
+		OutputStream os = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(os);
+		System.setOut(ps);
+
+		String expected = "Vampire Bat has eaten a Ant";
 		
 		c1.whatDidYouEat();
 		assertEquals(expected+separator,os.toString());	
